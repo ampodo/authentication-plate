@@ -1,0 +1,15 @@
+# Ignore environment variables
+.env
+
+# Ignore specific environment variables
+.env.local
+
+# Ignore specific environment variables with values
+.env.*.local
+
+# Ignore node_modules folder
+node_modules/
+
+
+
+
