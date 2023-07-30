@@ -4,9 +4,11 @@ dotenv.config();
 import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
-const port = process.env.PORT || 8000;
-import userRoutes from './routes/userRoutes.js'
+import cors from 'cors'; // Import the cors middleware
 
+const port = process.env.PORT || 8000;
+
+import userRoutes from './routes/userRoutes.js'
 
 connectDB();
 
@@ -17,8 +19,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-app.use('/api/users', userRoutes);
+// Enable CORS for requests from http://localhost:3000
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => res.send('Server is ready'));
 
@@ -26,3 +33,4 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
+
