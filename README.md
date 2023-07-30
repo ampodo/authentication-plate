@@ -8,4 +8,7 @@ State in this app is managed by redux toolkit. Actions in this app are stored in
 
 
 
+
+
+
 ![Sign Up screen](https://github.com/ampodo/authentication-plate/blob/main/signup.png)
